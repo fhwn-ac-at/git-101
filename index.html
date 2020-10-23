@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Git 101</title>
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/reveal.js@4.1.0/dist/reset.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/reveal.js@4.1.0/dist/reveal.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/reveal.js@4.1.0/dist/theme/night.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/reveal.js@4.1.0/plugin/highlight/monokai.css"
+    />
+
+    <style>
+      .reveal h1 {
+        font-size: 2.55em !important;
+      }
+
+      .reveal h2 {
+        font-size: 1.99em !important;
+      }
+
+      .reveal h3 {
+        font-size: 1.44em !important;
+      }
+
+      .reveal h4 {
+        font-size: 1em !important;
+      }
+
+      .orange {
+        color: #f1502f !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section
+          data-background-image="img/Git-Icon.svg"
+          data-background-position="top 5vmin left 5vmin"
+          data-background-size="50vmin"
+        >
+          <h1>Git 101</h1>
+        </section>
+
+        <section>
+          <section
+            data-background-image="img/Git-Icon-White.svg"
+            data-background-size="80vh"
+            data-background-opacity="20%"
+            data-background-position="70vw"
+          >
+            <h1>What is Version Control?</h1>
+          </section>
+          <section>
+            <h2>Your Job</h2>
+          </section>
+
+          <section>
+            <h3>Your Daily Tasks</h3>
+            <ul>
+              <li class="fragment"><strong>Create</strong> things</li>
+              <li class="fragment"><strong>Save</strong> things</li>
+              <li class="fragment"><strong>Edit</strong> things</li>
+              <li class="fragment">Save the thing <strong>again</strong></li>
+            </ul>
+          </section>
+          <section>
+            <h3>Version Control Systems</h3>
+            Version control systems (<em>VCS</em>) are a category of software
+            tools that help a software team <strong>manage changes</strong> to
+            source code <strong>over time</strong>.
+          </section>
+          <section>
+            Version control software keeps track of every modification to the
+            code in a special kind of database.
+          </section>
+          <section>
+            If a mistake is made, developers can turn back the clock and compare
+            earlier versions of the code to help fix the mistake while
+            minimizing disruption to all team members.
+          </section>
+          <section>
+            <p>
+              A Version control system is a <strong>very wise</strong> thing to
+              use.
+            </p>
+            <p>
+              It lets you easily <strong>recover</strong> whenever you screw
+              things up or lose files.
+            </p>
+          </section>
+          <section>
+            A VCS allows you to
+            <ul>
+              <li class="fragment">
+                revert selected files to a previous state,
+              </li>
+              <li class="fragment">compare changes over time,</li>
+              <li class="fragment">see who last modified something, or</li>
+              <li class="fragment">determine when an issue was introduced.</li>
+            </ul>
+          </section>
+          <section>
+            <p>There are a few different types of VCS</p>
+            <ul>
+              <li class="fragment">Local Version Control Systems (LVCS)</li>
+              <li class="fragment">
+                Centralized Version Control Systemsa (CVCS)
+              </li>
+              <li class="fragment">
+                Distributed Version Control Systems (DVCS)
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3>Local Version Control System</h3>
+            <img data-src="img/lvcs.png" class="r-stretch" />
+          </section>
+          <section>
+            <h3>Centralized Version Control System</h3>
+            <img data-src="img/cvcs.png" class="r-stretch" />
+          </section>
+
+          <section
+            id="distributed-version-control-systems"
+            class="slide level3"
+            data-background-image="img/Git-Icon-White.svg"
+            data-background-size="80vh"
+            data-background-opacity="20%"
+            data-background-position="70vw"
+          >
+            <h3>Distributed Version Control Systems</h3>
+          </section>
+          <section>
+            <p>
+              In a DVCS, clients don't just check out the latest snapshot of the
+              files.
+            </p>
+            <p>
+              Every user has a <strong>full copy</strong> of the repository,
+              including its <strong>history</strong>.
+            </p>
+          </section>
+          <section>
+            <img data-src="img/dvcs.png" class="r-stretch" />
+          </section>
+          <section>
+            Git is an example of a
+            <strong>distributed version control system</strong> (<em>DVCS</em>)
+            commonly used for open source and commercial software development.
+          </section>
+          <section>
+            A DVCS allows full access to every file, branch, and iteration of a
+            project, and allows every user access to a full and
+            <strong>self-contained</strong> history of all changes.
+          </section>
+          <section>
+            A DVCS like Git doesn’t need a constant connection to a central
+            repository. Developers can work anywhere and collaborate
+            asynchronously from any time zone.
+          </section>
+          <section>
+            To eliminate unnecessary work, Git and other VCSs give each
+            contributor a unified and consistent view of a project, surfacing
+            work that’s already in progress.
+          </section>
+          <section>
+            Seeing a transparent history of changes, who made them, and how they
+            contribute to the development of a project helps team members stay
+            aligned while working independently.
+          </section>
+        </section>
+        <section>
+          <section
+            data-background-image="img/Git-Icon-White.svg"
+            data-background-size="80vh"
+            data-background-opacity="20%"
+            data-background-position="70vw"
+          >
+            <h1>Git Setup</h1>
+          </section>
+
+          <section
+            data-background-image="img/Git-Icon-White.svg"
+            data-background-size="80vh"
+            data-background-opacity="20%"
+            data-background-position="70vw"
+          >
+            <h2>Install Git</h2>
+            <ul>
+              <li class="fragment">
+                Linux (Debian/Ubuntu)
+                <ul>
+                  <li class="fragment"><code>apt install git</code></li>
+                </ul>
+              </li>
+              <li class="fragment">
+                Windows
+                <ul>
+                  <li class="fragment">
+                    <a href="https://git-scm.com/download/win"
+                      >https://git-scm.com/download/win</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+
+          <section
+            data-background-image="img/GitHub-Mark.svg"
+            data-background-size="80vh"
+            data-background-opacity="20%"
+            data-background-position="70vw"
+          >
+            <h2>Create GitHub Account</h2>
+            <a href="https://github.com/">https://github.com/join</a>
+            <img data-src="img/GitHub-Screenshot.png" class="r-stretch" />
+          </section>
+        </section>
+        <section>
+          <section
+            data-background-image="img/Git-Icon-White.svg"
+            data-background-size="80vh"
+            data-background-opacity="20%"
+            data-background-position="70vw"
+          >
+            <h1>Git Basics</h1>
+          </section>
+          <section>
+            <h3>How does Git work?</h3>
+            <p>Can be complicated at first but there are some key concepts.</p>
+            <p>
+              Important Git terminology on following slides is
+              <span class="orange">orange</span>.
+            </p>
+          </section>
+          <section>
+            <h3 class="orange">Snapshot</h3>
+            <ul>
+              <li class="fragment">
+                The way Git keeps track of your code history
+              </li>
+              <li class="fragment">
+                Records what all your files look like at any given point in
+                time.
+              </li>
+              <li class="fragment">
+                You decide when to take a snapshot and of which files.
+              </li>
+              <li class="fragment">You can go back to visit any snapshot.</li>
+            </ul>
+          </section>
+          <section>
+            <h3 class="orange">Commit</h3>
+            <ul>
+              <li class="fragment">
+                The act of creating a <span class="orange">snapshot</span>.
+              </li>
+              <li class="fragment">
+                Can be a <em>noun</em> or a <em>verb</em>:
+                <ul>
+                  <li class="fragment">"I commited code"</li>
+                  <li class="fragment">"I just made a new commit"</li>
+                </ul>
+              </li>
+              <li class="fragment">
+                A project is made up of a bunch of commits.
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3 class="orange">Commit</h3>
+            <p>
+              <span class="orange">Commits</span> contain three pieces of
+              information:
+            </p>
+            <ol>
+              <li class="fragment">
+                Information about <strong>how</strong> the files changed from
+                their previous state.
+              </li>
+              <li class="fragment">
+                A reference to the <span class="orange">commit</span> that came
+                before it.
+                <ul>
+                  <li class="fragment">
+                    Called the <span class="orange">parent commit</span>
+                  </li>
+                </ul>
+              </li>
+              <li class="fragment">
+                A <span class="orange">hash code</span> name.
+                <ul>
+                  <li class="fragment">
+                    Will look something like<br />
+                    <code>fad5759c5319ef79694cdf7c04b772731470329b</code>
+                  </li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+          <section>
+            <h3 class="orange">Repository</h3>
+            <ul>
+              <li class="fragment">
+                Often shortend to <span class="orange">repo</span>.
+              </li>
+              <li class="fragment">
+                A collection of all the files and their history.
+                <ul>
+                  <li class="fragment">
+                    Consists of all <span class="orange">commits</span>.
+                  </li>
+                  <li class="fragment">
+                    It's where all your hard work is stored.
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3 class="orange">Repository</h3>
+            <ul>
+              <li class="fragment">
+                Can live on a local machine and/or on a remote server (e.g.
+                GitHub).
+              </li>
+              <li class="fragment">
+                The act of copying a repository from a remote server is called
+                <span class="orange">cloning</span>.
+              </li>
+              <li class="fragment">
+                <span class="orange">Cloning</span> from a remote server allows
+                teams to work together.
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3 class="orange">Repository</h3>
+            <ul>
+              <li class="fragment">
+                The process of downloading
+                <span class="orange">commits</span> that don't exist on your
+                machine from a remote repository is called
+                <span class="orange">pulling</span> changes.
+              </li>
+              <li class="fragment">
+                The process of uploading your local
+                <span class="orange">commits</span> to the remote repository is
+                called <span class="orange">pushing</span> changes.
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3 class="orange">Branch</h3>
+            <ul>
+              <li class="fragment">
+                All <span class="orange">commits</span> in Git live on some
+                <span class="orange">branch</span>.
+              </li>
+              <li class="fragment">
+                There can be many, many <span class="orange">branches</span> in
+                a repository.
+              </li>
+              <li class="fragment">
+                The main branch in a project is called the
+                <span class="orange fragment fade-in-then-out">
+                  <del>master</del>
+                </span>
+                <span class="orange fragment fade-up">main</span>
+                branch.
+              </li>
+            </ul>
+          </section>
+          <section>
+            <img data-src="img/conventions.svg" class="r-stretch" />
+          </section>
+          <section>
+            <p>
+              <span class="orange">HEAD</span> is a reference to the most recent
+              <span class="orange">commit</span> <small>(in most cases)</small>
+            </p>
+            <img data-src="img/conventions.svg" class="r-stretch" />
+          </section>
+          <section>
+            <h3>File States</h3>
+            Each file known to a Git repository is in one of three states:
+            <ul>
+              <li class="fragment">
+                <span class="orange">Commited</span> files are safely stored in
+                the database.
+              </li>
+              <li class="fragment">
+                <span class="orange">Modified</span> files have been changed but
+                are not yet stored in the database.
+              </li>
+              <li class="fragment">
+                <span class="orange">Staged</span> files are modified files that
+                have been marked for inclusion in the next commit.
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3>Basic Workflow</h3>
+            <ol>
+              <li class="fragment">
+                You modify files in your
+                <span class="orange">working tree</span>.
+              </li>
+              <li class="fragment">
+                You selectively <span class="orange">stage</span> those changes
+                you want to be part of the next commit.
+              </li>
+              <li class="fragment">
+                You <span class="orange">commit</span> those changes, storing
+                them safely in the local database.
+              </li>
+            </ol>
+          </section>
+          <section>
+            <h3>Basic Workflow</h3>
+            <img data-src="img/areas.png" class="r-stretch" />
+          </section>
+        </section>
+        <section>
+          <section
+            data-background-image="img/Git-Icon-White.svg"
+            data-background-size="80vh"
+            data-background-opacity="20%"
+            data-background-position="70vw"
+          >
+            <h1>Git Commands</h1>
+          </section>
+          <section>
+            <h3><code>git init</code></h3>
+            <ul>
+              <li class="fragment">
+                Initializes a new repository in the current directory.
+              </li>
+              <li class="fragment">
+                Creates the <code>.git</code> directory that will store the
+                history of your files.
+              </li>
+              <li class="fragment">
+                The repository starts out empty until you
+                <code>add</code> some files.
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3><code>git init</code></h3>
+            <pre><code class="language-shell" data-trim>
+$ mkdir project
+$ cd project
+$ git init
+Initialized empty Git repository in /home/perry/project/.git/
+            </code></pre>
+          </section>
+          <section>
+            <h3><code>git clone</code></h3>
+            <ul>
+              <li class="fragment">
+                Creates a <strong>full copy</strong> of an existing repository.
+              </li>
+              <li class="fragment">
+                Source repositories can be local or hosted remotely (e.g on
+                GitHub).
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3><code>git clone</code></h3>
+            <pre><code class="language-shell" data-trim>
+$ git clone https://github.com/leachim6/hello-world
+Cloning into 'hello-world'...
+remote: Enumerating objects: 24, done.
+remote: Counting objects: 100% (24/24), done.
+remote: Compressing objects: 100% (19/19), done.
+remote: Total 5254 (delta 8), reused 10 (delta 3), pack-reused 5230
+Receiving objects: 100% (5254/5254), 2.62 MiB | 4.23 MiB/s, done.
+Resolving deltas: 100% (2535/2535), done.
+            </code></pre>
+          </section>
+          <section>
+            <h3><code>git status</code></h3>
+            <ul>
+              <li class="fragment">
+                Shows you an overview of currently modified (or untracked)
+                files.
+              </li>
+              <li class="fragment">Shows you the current branch.</li>
+              <li class="fragment">
+                Shows you if you're up to date with a remote repository.
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3><code>git status</code></h3>
+            <pre><code class="r-stretch language-shell" data-trim data-line-numbers="2,7,8,14">
+$ cd hello-world
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+$ echo "Hello, World" > README
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add &lt;file&gt;..." to include in what will be committed)
+        README
+
+nothing added to commit but untracked files present (use "git add" to track)
+            </code></pre>
+          </section>
+          <section>
+            <h3><code>git add</code></h3>
+            <ul>
+              <li class="fragment">
+                Begins tracking a new file and adds it to the staging area.
+              </li>
+              <li class="fragment">
+                Adds modifications of a known file to the staging area.
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3><code>git add</code></h3>
+            <pre><code class="r-stretch language-shell" data-trim data-line-numbers="7,10,17">
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add &lt;file&gt;..." to include in what will be committed)
+        README
+
+nothing added to commit but untracked files present (use "git add" to track)
+$ git add README
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged &lt;file&gt;..." to unstage)
+        new file:   README
+            </code></pre>
+          </section>
+          <section>
+            <h3><code>git diff</code></h3>
+            <ul>
+              <li class="fragment">
+                Shows changes of modified files not yet added to the staging
+                area.
+              </li>
+              <li class="fragment">
+                <code>git diff --staged</code> shows only staged changes.
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3><code>git diff</code></h3>
+            <pre><code class="r-stretch language-diff" data-trim data-line-numbers>
+$ git diff
+diff --git a/LICENSE b/LICENSE
+index a6aff0a..ba5542e 100755
+--- a/LICENSE
++++ b/LICENSE
+@@ -1,6 +1,6 @@
+ MIT License
+
+-Copyright (c) 2018 Mike Donaghy [leachim6]
++Copyright (c) 2020 Mike Donaghy [leachim6]
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+            </code></pre>
+          </section>
+          <section>
+            <h3><code>git diff</code></h3>
+            <pre><code class="r-stretch language-diff" data-trim data-line-numbers>
+$ git diff --staged
+diff --git a/README b/README
+new file mode 100644
+index 0000000..3fa0d4b
+--- /dev/null
++++ b/README
+@@ -0,0 +1 @@
++Hello, World
+            </code></pre>
+          </section>
+          <section>
+            <h3><code>git commit</code></h3>
+            <ul>
+              <li class="fragment">
+                Adds all staged changes to a new commit and takes a new snapshot
+                of the repository.
+              </li>
+              <li class="fragment">
+                Needs a <strong>commit message</strong> that usually contains a
+                reason for the contained changes.
+                <ul>
+                  <li class="fragment">
+                    Can either be passed using the <code>-m</code> command line
+                    flag or edited interactively.
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3><code>git commit</code></h3>
+            <pre><code class="r-stretch language-shell" data-trim data-line-numbers="8-11">
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged &lt;file&gt;..." to unstage)
+        new file:   README
+$ git commit -m "Add README with a short greeting"
+[main ca3e8fa] Add README with a short greeting
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README
+            </code></pre>
+          </section>
+          <section>
+            <h3><code>git rm</code></h3>
+            <ul>
+              <li class="fragment">
+                Removes a file from the repository and the local filesystem.
+              </li>
+              <li class="fragment">
+                Needs to be commited just like an added file.
+                <ul>
+                  <li class="fragment">
+                    Its history is maintained and it can be restored if
+                    necessary.
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3><code>git rm</code></h3>
+            <pre><code class="r-stretch language-shell" data-trim data-line-numbers="1,10,12-14">
+$ git rm README
+rm 'README'
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git restore --staged &lt;file&gt;..." to unstage)
+        deleted:    README
+$ git commit -m "There already is a README.md"
+[main d388459] There already is a README.md
+ 1 file changed, 1 deletion(-)
+ delete mode 100644 README
+            </code></pre>
+          </section>
+          <section>
+            <h3><code>git log</code></h3>
+            <ul>
+              <li class="fragment">Shows a log of recent commits</li>
+              <li class="fragment">
+                Contains
+                <ul>
+                  <li class="fragment">commit hash</li>
+                  <li class="fragment">author</li>
+                  <li class="fragment">date</li>
+                  <li class="fragment">commit message</li>
+                </ul>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3><code>git log</code></h3>
+            <pre><code class="r-stretch language-shell" data-trim data-line-numbers>
+$ git log
+commit d388459de2cc6d5bd93c200bf5ce2bf07bed86c9 (HEAD -&gt; main)
+Author: Kevin Perry &lt;perry@fhwn.ac.at&gt;
+Date:   Thu Oct 22 19:57:38 2020 +0200
+
+    There already is a README.md
+
+commit ca3e8faf765a345c62a932626b9408fc283ac4e2
+Author: Kevin Perry &lt;perry@fhwn.ac.at&gt;
+Date:   Thu Oct 22 19:51:41 2020 +0200
+
+    Add README with a short greeting
+
+commit e09c405e39c1518d91c8643d617e42c1d980a111 (origin/main, origin/HEAD)
+Author: Ferhat Geçdoğan &lt;54369961+ferhatgec@users.noreply.github.com&gt;
+Date:   Mon Oct 19 22:28:47 2020 +0300
+
+    Fix FlaScript (#851)
+            </code></pre>
+          </section>
+          <section>
+            <h3><code>git restore</code></h3>
+            <ul>
+              <li class="fragment">Lets you undo changes to modified files.</li>
+              <li class="fragment">
+                <code>git restore --staged</code> lets you remove files from the
+                staging area without undoing the modification.
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3><code>git pull</code></h3>
+            <ul>
+              <li class="fragment">
+                Lets you download changes from remote repositories and adds them
+                to the local copy.
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3><code>git pull</code></h3>
+            <pre><code class="r-stretch language-shell" data-trim data-line-numbers="3,7-14">
+$ git status
+On branch main
+Your branch is behind 'origin/main' by 2 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+nothing to commit, working tree clean
+$ git pull
+Updating 73762dd..e09c405
+Fast-forward
+ #/~Thai.ext     | 2 ++
+ README.md       | 1 +
+ f/flascript.fls | 6 +++---
+ 3 files changed, 6 insertions(+), 3 deletions(-)
+ create mode 100644 #/~Thai.ext
+            </code></pre>
+          </section>
+          <section>
+            <h3><code>git push</code></h3>
+            <ul>
+              <li class="fragment">
+                Lets you upload changes from a local repository to a remote
+                copy.
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3><code>git push</code></h3>
+            <pre><code class="r-stretch language-shell" data-trim data-line-numbers="3,7-14">
+$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+$ git push
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 302 bytes | 302 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/leachim6/hello-world.git
+  45cd8fc..8ac5de3  main -> main
+            </code></pre>
+          </section>
+          <section>
+            <h3><code>.gitignore</code></h3>
+            The special file <code>.gitignore</code> can be used to hide files
+            and folders you do not want to track.
+          </section>
+          <section>
+            <h3><code>.gitignore</code></h3>
+            <pre><code class="r-stretch language-ini" data-trim>
+# Build results
+Debug/
+Release/
+bin/
+obj/
+
+# Files built by Visual Studio
+*.obj
+*.pdb
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+            </code></pre>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/reveal.js@4.1.0/dist/reveal.js"></script>
+    <script src="https://unpkg.com/reveal.js@4.1.0/plugin/highlight/highlight.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,
+        plugins: [RevealHighlight],
+      });
+    </script>
+  </body>
+</html>
